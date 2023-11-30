@@ -1,0 +1,89 @@
+<!doctype html><html><head><style type="text/css">*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --white: #ffffff;
+}
+
+body{
+  background: url("https://images.pexels.com/photos/130879/pexels-photo-130879.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  font-family: 'Roboto', sans-serif;
+}
+
+.container .details h1{
+  font-size: 150px;
+}
+
+.container .details h2{
+  font-size: 60px;
+}
+
+.container .details h2 span{
+  margin-right: 20px;
+}</style></head><body><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+<div class="container">
+  <div class="details">
+  <h2 id="greeting"> </h2>
+  <h1 id="time">  </h1>
+  <h2><span id="day"></span><span id="date"></span></h2>
+  </div>
+</div><script type="text/javascript">function displayTime() {
+  let date = new Date();
+  let hour = date.getHours();
+  let minute = date.getMinutes();
+  let sec = date.getSeconds();
+  hour = hour < 10 ? "0" + hour : hour;
+  minute = minute < 10 ? "0" + minute : minute;
+  sec = sec < 10 ? "0" + sec : sec;
+  document.getElementById("time").innerHTML = hour + ":" + minute + ":" + sec;
+}
+
+setInterval(displayTime, 1000);
+
+function displayGreeting() {
+  let date = new Date();
+  let hours = date.getHours();
+  if (hours >= 5) {
+    document.getElementById("greeting").innerHTML = "Good Morning";
+    // document.body.style.background = "url('https://images.pexels.com/photos/910411/pexels-photo-910411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"
+    // document.body.style.backgroundSize = "cover"
+  }
+  else if (hour > 12 && hour <= 16) {
+    document.getElementById("greeting").innerHTML = "Good Afternoon";
+    document.body.style.background = "url('https://images.pexels.com/photos/910411/pexels-photo-910411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"
+    document.body.style.backgroundSize = "cover"
+  }
+  else if (hour > 16 && hour <= 20) {
+    document.getElementById("greeting").innerHTML = "Good Evening";
+    document.body.style.background = "url('https://images.pexels.com/photos/70577/sunset-birds-flying-sky-70577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"
+    document.body.style.backgroundSize = "cover"
+  } else {
+    document.getElementById("greeting").innerHTML = "Good Night";
+    document.body.style.background = "url('https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"
+    document.body.style.backgroundSize = "cover"
+  }
+}
+
+displayGreeting();
+
+function displayDay() {
+  let weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let date = new Date();
+  let day = date.getDay();
+  document.getElementById("day").innerHTML = weekday[day];
+  document.getElementById("date").innerHTML = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+}
+displayDay();</script></body><html>
